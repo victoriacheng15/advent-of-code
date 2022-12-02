@@ -21,10 +21,9 @@ const getCalories = async () => {
 		console.log("highest calories count: ", sortedCalories[0]);
 
 		//part 2
-		const top3 = sortedCalories.slice(0,3)
-		const totalTop3Calories = top3.reduce((acc, cal) => acc + cal, 0)
-		console.log("Total top 3 elves calories count: ", totalTop3Calories )
-
+		const top3 = sortedCalories.slice(0, 3);
+		const totalTop3Calories = top3.reduce((acc, cal) => acc + cal, 0);
+		console.log("Total top 3 elves calories count: ", totalTop3Calories);
 	} catch (error) {
 		console.log(error);
 	}
