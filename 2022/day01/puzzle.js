@@ -1,30 +1,40 @@
 const fs = require("fs/promises");
 const path = require("path");
 
-function getElfTotalCalories(array) {
-	return array.map((elf) =>
-		elf.split("\n").reduce((acc, calorie) => acc + Number(calorie), 0),
-	);
+function sortedCalories(arr) {
+	return arr
+		.map((elf) =>
+			elf.split("\n").reduce((acc, calorie) => acc + Number(calorie), 0),
+		)
+		.sort((a, b) => b - a);
 }
 
-const getCalories = async () => {
+function part1(input) {
+	const result = sortedCalories(input);
+
+	console.log(`Highest calories count: ${result[0]} `);
+}
+
+function part2(input) {
+	const result = sortedCalories(input);
+	const totalTop3Calories = result
+		.slice(0, 3)
+		.reduce((acc, cal) => acc + cal, 0);
+
+	console.log(`Total top 3 elves calories count: ${totalTop3Calories}`);
+}
+
+const day01 = async () => {
 	try {
 		const file = path.join(__dirname, "input.txt");
 		const data = await fs.readFile(file, { encoding: "utf-8" });
 		const elves = data.split("\n\n");
-		
-		// part 1
-		const totalElvesCalories = getElfTotalCalories(elves);
-		const sortedCalories = totalElvesCalories.sort((a, b) => b - a);
-		console.log(`highest calories count: ${sortedCalories[0]} `);
 
-		//part 2
-		const top3 = sortedCalories.slice(0, 3);
-		const totalTop3Calories = top3.reduce((acc, cal) => acc + cal, 0);
-		console.log(`Total top 3 elves calories count: ${totalTop3Calories}`);
+		part1(elves);
+		part2(elves);
 	} catch (error) {
 		console.log(error);
 	}
 };
 
-getCalories();
+day01();

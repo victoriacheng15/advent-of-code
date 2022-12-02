@@ -25,31 +25,35 @@ function part1(input) {
 // me: X - lose, Y- draw, Z - win
 
 function part2(input) {
-  const result = input.reduce((acc, [opponent, , result]) => {
-    const shape = {
-      A: { X: 3, Y: 1, Z: 2 },
-      B: { X: 1, Y: 2, Z: 3 },
-      C: { X: 2, Y: 3, Z: 1 },
-    }[opponent][result];
-    const outcome = {
-      X: 0,
-      Y: 3,
-      Z: 6,
-    }[result];
+	const result = input.reduce((acc, [opponent, , result]) => {
+		const shape = {
+			A: { X: 3, Y: 1, Z: 2 },
+			B: { X: 1, Y: 2, Z: 3 },
+			C: { X: 2, Y: 3, Z: 1 },
+		}[opponent][result];
+		const outcome = {
+			X: 0,
+			Y: 3,
+			Z: 6,
+		}[result];
 
-    return acc + shape + outcome
-  }, 0)
+		return acc + shape + outcome;
+	}, 0);
 
 	console.log(`Total Score if follow Elf: ${result}`);
 }
 
 const day2 = async () => {
-	const file = path.join(__dirname, "input.txt");
-	const data = await fs.readFile(file, { encoding: "utf-8" });
-	const input = data.split("\n");
+	try {
+		const file = path.join(__dirname, "input.txt");
+		const data = await fs.readFile(file, { encoding: "utf-8" });
+		const input = data.split("\n");
 
-	part1(input);
-	part2(input);
+		part1(input);
+		part2(input);
+	} catch (error) {
+		console.log(error);
+	}
 };
 
 day2();
