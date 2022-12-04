@@ -3,9 +3,9 @@ const path = require("path");
 
 const priorities = "_abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-const sum = (acc, num) => acc + num
+const sum = (acc, num) => acc + num;
 
-const priority = (letter) => priorities.indexOf(letter)
+const priority = (letter) => priorities.indexOf(letter);
 
 Array.prototype.group = function (length) {
 	return this.reduce((acc, arr, index) => {
@@ -27,7 +27,7 @@ function part1(input) {
 			[...left].find((leftItem) => right.includes(leftItem)),
 		)
 		.map(priority)
-		.reduce(sum, 0)
+		.reduce(sum, 0);
 
 	console.log(`The sum of priorities: ${result}`);
 }
@@ -39,7 +39,7 @@ function part2(input) {
 			[...elves[0]].find((badge) => elves.every((elf) => elf.includes(badge))),
 		)
 		.map(priority)
-    .reduce(sum, 0)
+		.reduce(sum, 0);
 
 	console.log(`The sum of priorities (badges): ${result}`);
 }
