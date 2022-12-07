@@ -18,15 +18,14 @@ function part2(input) {
 		.map((line) => line.split(regex).map(Number))
 		.filter(([l1, l2, r1, r2]) => {
 			return (
-        (l2 >= r1 && l2 <= r2) ||
-        (l1 >= r1 && l1 <= r2) ||
-        (r1 >= l1 && r1 <= l2) ||
-        (r2 >= l1 && r2 <= l2)
+				(l2 >= r1 && l2 <= r2) ||
+				(l1 >= r1 && l1 <= r2) ||
+				(r1 >= l1 && r1 <= l2) ||
+				(r2 >= l1 && r2 <= l2)
 			);
 		}).length;
 
-	// console.log({ result });
-	console.log(`The amount of overlapped assignment pairs: ${result}`)
+	console.log(`The amount of overlapped assignment pairs: ${result}`);
 }
 
 const day4 = async () => {
